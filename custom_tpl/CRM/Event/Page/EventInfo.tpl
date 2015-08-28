@@ -184,41 +184,7 @@
       </div>
   {/if}
 
-  {if $event.is_monetary eq 1 && $feeBlock.value}
-      <div class="crm-section event_fees-section">
-          <div class="label"><label>{$event.fee_label}</label></div>
-          <div class="content">
-              <table class="form-layout-compressed fee_block-table">
-                  {foreach from=$feeBlock.value name=fees item=value}
-                      {assign var=idx value=$smarty.foreach.fees.iteration}
-                      {* Skip price field label for quick_config price sets since it duplicates $event.fee_label *}
-                      {if $feeBlock.lClass.$idx}
-                          {assign var="lClass" value=$feeBlock.lClass.$idx}
-                      {else}
-                          {assign var="lClass" value="fee_level-label"}
-                      {/if}
-                      {if $isQuickConfig && $lClass EQ "price_set_option_group-label"}
-                        {* Skip price field label for quick_config price sets since it duplicates $event.fee_label *}
-                      {else}
-                      <tr>
-                          <td class="{$lClass} crm-event-label">{$feeBlock.label.$idx}</td>
-                          {if $isPriceSet & $feeBlock.isDisplayAmount.$idx}
-            <td class="fee_amount-value right">
-                              {if isset($feeBlock.tax_amount.$idx)}
-          {$feeBlock.value.$idx}
-                              {else}
-                {$feeBlock.value.$idx|crmMoney}
-                              {/if}
-            </td>
-                          {/if}
-                      </tr>
-                      {/if}
-                  {/foreach}
-              </table>
-          </div>
-          <div class="clear"></div>
-      </div>
-  {/if}
+{* MJW: Removed event fees block *}
 
 
     {include file="CRM/Custom/Page/CustomDataView.tpl"}

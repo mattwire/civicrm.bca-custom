@@ -30,6 +30,9 @@
       <legend>
         {$paymentTypeLabel}
       </legend>
+      {if ($form.formClass == 'CRM_Event_Form_Registration_Register')}
+        <div class="description">{ts}Please enter your payment details now.  <b>You will NOT be charged when you click Continue.</b>  Once you have finished entering details of any additional people you will be able to confirm all the details and complete payment.{/ts}</div>	  
+      {/if}
       {if $form.$expressButtonName}
         {include file= "CRM/Core/paypalexpress.tpl"}
       {/if}
