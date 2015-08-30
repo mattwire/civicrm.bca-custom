@@ -88,6 +88,10 @@ class CRM_Event_Form_ParticipantFeeSelection extends CRM_Core_Form {
     }
     $this->_action = CRM_Utils_Request::retrieve('action', 'String', $this, TRUE);
 
+	if ((!CRM_Core_Permission::check('edit event participants')) || ($this->_action != CRM_Core_Action::UPDATE)) {
+		CRM_Core_Error::fatal(ts('Permission Denied'));
+	}
+
     list($this->_contributorDisplayName, $this->_contributorEmail) = CRM_Contact_BAO_Contact_Location::getEmailDetails($this->_contactId);
     $this->assign('displayName', $this->_contributorDisplayName);
     $this->assign('email', $this->_contributorEmail);
