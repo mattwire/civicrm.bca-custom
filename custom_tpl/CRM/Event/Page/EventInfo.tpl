@@ -204,7 +204,7 @@
 
     {if $event.is_share }
         {capture assign=eventUrl}{crmURL p='civicrm/event/info' q="id=`$event.id`&amp;reset=1" a=1 fe=1 h=1}{/capture}
-        {include file="CRM/common/SocialNetwork.tpl" url=$eventUrl title=$event.title pageURL=$eventUrl}
+        {include file="CRM/Event/Form/Registration/`$event.id`/SocialNetwork.tpl" url=$eventUrl title=$event.title pageURL=$eventUrl}
     {/if}
     </div>
 </div>
