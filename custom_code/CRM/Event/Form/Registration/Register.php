@@ -625,7 +625,7 @@ class CRM_Event_Form_Registration_Register extends CRM_Event_Form_Registration {
 
       // CRM-14492 Admin price fields should show up on event registration if user has 'administer CiviCRM' permissions
       $adminFieldVisible = FALSE;
-      if (CRM_Core_Permission::check('administer CiviCRM')) {
+      if (CRM_Core_Permission::check('edit event participants')) {
         $adminFieldVisible = TRUE;
       }
 
@@ -639,7 +639,12 @@ class CRM_Event_Form_Registration_Register extends CRM_Event_Form_Registration {
           $fieldId = $field['id'];
           $elementName = 'price_' . $fieldId;
 
-          $isRequire = CRM_Utils_Array::value('is_required', $field);
+          //$isRequire = CRM_Utils_Array::value('is_required', $field);
+          // MJW: is_required: always,public,admin
+          $isRequire = CRM_Utils_Array::value('is_required', $field, FALSE);
+          if ($adminFieldVisible == TRUE) {
+            $isRequire = FALSE;
+          }
           if ($button == 'skip') {
             $isRequire = FALSE;
           }
