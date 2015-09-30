@@ -48,7 +48,12 @@
     <tr class="crm-event-participantview-form-block-displayName">
       <td class="label">{ts}Participant Name{/ts}</td>
       <td>
-        <strong><a href="{crmURL p='civicrm/contact/view' q="reset=1&cid=$contact_id"}" title="{ts}View contact record{/ts}">{$displayName}</a></strong>
+        <strong><a href="{crmURL p='civicrm/contact/view' q="reset=1&cid=$contact_id"}" title="{ts}View contact record{/ts}">{$displayName}
+        {crmAPI var='result' entity='Email' action='get' return="email" contact_id=$contact_id}
+        ({foreach from=$result.values item=email name=email}
+          {$email.email}{if $smarty.foreach.email.last}{else},{/if}
+        {/foreach})
+        </a></strong>
         <div>
             <a class="action-item crm-hover-button" href="{crmURL p='civicrm/event/badge' q="reset=1&context=view&id=$id&cid=$contact_id"}"><span class="icon ui-icon-print"></span> {ts}Print Name Badge{/ts}</a>
         </div>
