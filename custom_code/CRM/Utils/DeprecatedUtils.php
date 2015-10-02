@@ -1496,7 +1496,7 @@ function _civicrm_api3_deprecated_activity_buildmailparams($result, $activityTyp
 
   $params['activity_type_id'] = $activityTypeID;
 
-  $params['status_id'] = 2;
+  $params['status_id'] = 9;
   $params['source_contact_id'] = $params['assignee_contact_id'] = $result['from']['id'];
   $params['target_contact_id'] = array();
   $keys = array('to', 'cc', 'bcc');
