@@ -102,7 +102,7 @@ class CRM_Activity_Form_Task_PickProfile extends CRM_Activity_Form_Task {
       $activityTypeIds['Email'],
       $activityTypeIds['Bulk Email'],
       $activityTypeIds['Contribution'],
-      $activityTypeIds['Inbound Email'],
+      //$activityTypeIds['Inbound Email'],
       $activityTypeIds['Pledge Reminder'],
       $activityTypeIds['Membership Signup'],
       $activityTypeIds['Membership Renewal'],
