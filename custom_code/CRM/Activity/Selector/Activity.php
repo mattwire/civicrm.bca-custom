@@ -267,15 +267,17 @@ class CRM_Activity_Selector_Activity extends CRM_Core_Selector_Base implements C
       if (!isset($delUrl) || !$delUrl) {
         $delUrl = $url;
       }
-      $actionLinks += array(
-        CRM_Core_Action::
-        DELETE => array(
-          'name' => ts('Delete'),
-          'url' => $delUrl,
-          'qs' => $qsDelete,
-          'title' => ts('Delete Activity'),
-        ),
-      );
+      if (CRM_Core_Permission::check('delete activities')) {
+        $actionLinks += array(
+          CRM_Core_Action::
+          DELETE => array(
+            'name' => ts('Delete'),
+            'url' => $delUrl,
+            'qs' => $qsDelete,
+            'title' => ts('Delete Activity'),
+          ),
+        );
+      }
     }
 
     if ($accessMailingReport) {
