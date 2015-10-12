@@ -46,7 +46,7 @@ class civicrm_handler_field_link_activity extends views_handler_field {
   function construct() {
     parent::construct();
     $this->additional_fields['id'] = 'id';
-    $this->additional_fields['source_contact_id'] = 'source_contact_id';
+    //MJW $this->additional_fields['source_contact_id'] = 'source_contact_id';
     $this->additional_fields['activity_type_id'] = 'activity_type_id';
   }
 
@@ -106,7 +106,8 @@ class civicrm_handler_field_link_activity extends views_handler_field {
         if (user_access('view all activities') && $link_text !== NULL && $link_text !== '') {
           return civicrm_views_href($link_text,
             'civicrm/contact/view/activity',
-            "atype={$values->civicrm_activity_activity_type_id}&action=view&reset=1&id={$values->id}&cid={$values->civicrm_activity_source_contact_id}&context=home"
+//MJW            "atype={$values->civicrm_activity_activity_type_id}&action=view&reset=1&id={$values->id}&cid={$values->civicrm_activity_source_contact_id}&context=home"
+            "atype={$values->civicrm_activity_activity_type_id}&action=view&reset=1&id={$values->id}&cid={$values->civicrm_activity_contact_contact_id}&context=home"
           );
         }
 
@@ -149,4 +150,3 @@ class civicrm_handler_field_link_activity extends views_handler_field {
     return $this->render_link(NULL, $values);
   }
 }
-
